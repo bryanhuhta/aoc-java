@@ -6,35 +6,19 @@ import java.util.List;
 
 public class Day01 {
     private final static String DAY_NAME = "Day 1";
+    private final static String DAY_DIR = "day01";
 
     public static void run(int mode) throws IOException {
-        StringBuilder sb = new StringBuilder("Day 1");
-        String filename;
-        switch (mode) {
-        case 0:
-            filename = "day01.test.txt";
-            sb.append(" (test)");
-            break;
-        case 1: filename = "day01.txt"; break;
-        default: throw new IllegalArgumentException("(" + DAY_NAME + ") invalid mode: " + mode);
-        }
-        System.out.println(sb.toString());
+        System.out.println(Utils.dayTitle(DAY_NAME, mode));
 
-        List<String> lines = ResourceUtils.lines(filename);
+        String filename = Utils.filenameForDay(DAY_DIR, mode);
+        List<String> lines = Utils.lines(filename);
 
-
-        int max = max(lines);
-        System.out.println("part 1: " + max);
-
-        int[] topN = topNMax(3, lines);
-        int topNSum = 0;
-        for (int v : topN) {
-            topNSum += v;
-        }
-        System.out.println("part 2: " + topNSum);
+        part1(lines);
+        part2(lines);
     }
 
-    private static int max(List<String> lines) {
+    private static void part1(List<String> lines) {
         int max = 0;
         int sum = 0;
         for (String line : lines) {
@@ -51,10 +35,10 @@ public class Day01 {
             max = Math.max(max, sum);
         }
 
-        return max;
+        System.out.println("part 1: " + max);
     }
 
-    private static int[] topNMax(int n, List<String> lines) {
+    private static void part2(List<String> lines) {
         int[] topN = {0, 0, 0};
         int sum = 0;
 
@@ -76,6 +60,11 @@ public class Day01 {
             topN[0] = sum;
         }
 
-        return topN;
+        int topNSum = 0;
+        for (int v : topN) {
+            topNSum += v;
+        }
+        System.out.println("part 2: " + topNSum);
     }
+
 }

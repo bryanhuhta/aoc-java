@@ -8,7 +8,14 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ResourceUtils {
+public class Utils {
+    /**
+     * Gets the lines of a file.
+     *
+     * @param filename the file name.
+     * @return Each line of the file.
+     * @throws IOException
+     */
     public static List<String> lines(String filename) throws IOException {
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
         InputStream is = classloader.getResourceAsStream(filename);
@@ -26,5 +33,28 @@ public class ResourceUtils {
         }
 
         return lines;
+    }
+
+    public static String filenameForDay(String day, int mode) {
+        String filename;
+        switch (mode) {
+        case 0: filename = day + "/test.txt"; break;
+        case 1: filename = day + "/data.txt"; break;
+        default: throw new IllegalArgumentException("invalid mode: " + mode);
+        }
+
+        return filename;
+    }
+
+    public static boolean isTestMode(int mode) {
+        return mode == 0;
+    }
+
+    public static String dayTitle(String day, int mode) {
+        StringBuilder sb = new StringBuilder(day);
+        if (Utils.isTestMode(mode)) {
+            sb.append(" (test)");
+        };
+        return sb.toString();
     }
 }

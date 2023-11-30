@@ -30,10 +30,9 @@ public class App {
         }
 
         switch (day) {
+        case 1: Day01.run(mode); break;
         default:
-        case 1:
-            Day01.run(mode);
-            break;
+        case 2: Day02.run(mode); break;
         }
     }
 }
