@@ -41,6 +41,7 @@ public class Day02 extends Day {
         super(2022, 2);
     }
 
+    @Override
     public void run(int mode) throws IOException {
         System.out.println(Utils.dayTitle(name, mode));
 

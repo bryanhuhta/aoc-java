@@ -18,20 +18,23 @@ public class App {
                 "mode",
                 true,
                 "the mode to run the aoc challenge (default: 0 (test mode))"
+            )
+            .addOption(
+                "y",
+                "year",
+                true,
+                "the year of AoC day"
             );
 
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse(options, args);
+        args = cmd.getArgs();
 
         int mode = Integer.parseInt(cmd.getOptionValue("m", "0"));
-        int dayNumber = 0;
+        int year = Integer.parseInt(cmd.getOptionValue("y", "0"));
+        int day = args.length >= 1 ? Integer.parseInt(args[0]) : 0;
 
-        args = cmd.getArgs();
-        if (args.length >= 1) {
-            dayNumber = Integer.parseInt(args[0]);
-        }
-
-        Day day = Aoc2022.getDayOrLatest(dayNumber);
-        day.run(mode);
+        Day aocDay = AocDays.getDayOrLatest(year, day);
+        aocDay.run(mode);
     }
 }
