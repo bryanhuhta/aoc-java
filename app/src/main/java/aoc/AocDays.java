@@ -11,7 +11,8 @@ public class AocDays {
 
         // 2022
         new aoc2022.Day01(),
-        new aoc2022.Day02()
+        new aoc2022.Day02(),
+        new aoc2022.Day03()
     );
 
     /**
