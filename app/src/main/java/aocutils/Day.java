@@ -43,9 +43,7 @@ public abstract class Day {
 
     protected abstract void _run() throws IOException;
 
-    protected List<String> getLines() throws IOException {
-        String filename = getFilenameForDay();
-
+    protected List<String> getLines(String filename) throws IOException {
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
         InputStream is = classloader.getResourceAsStream(filename);
 
@@ -64,6 +62,10 @@ public abstract class Day {
         return lines;
     }
 
+    protected List<String> getLines() throws IOException {
+        return getLines(getFilenameForDay());
+    }
+
     protected String getTitle() {
         StringBuilder sb = new StringBuilder(name);
         if (isTestMode()) {
@@ -72,7 +74,7 @@ public abstract class Day {
         return sb.toString();
     }
 
-    private boolean isTestMode() {
+    protected boolean isTestMode() {
         return mode == 0;
     }
 
