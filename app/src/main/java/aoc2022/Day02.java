@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import aocutils.Day;
+import aocutils.Utils;
+
 enum Shape {
     ROCK,
     PAPER,
@@ -16,11 +19,8 @@ enum Outcome {
     DRAW
 }
 
-public class Day02 {
-    private final static String DAY_NAME = "Day 2";
-    private final static String DAY_DIR = "day02";
-
-    private final static Map<String, Shape> shapes = Map.of(
+public class Day02 extends Day {
+    private static final Map<String, Shape> shapes = Map.of(
         "A", Shape.ROCK,
         "X", Shape.ROCK,
 
@@ -31,16 +31,20 @@ public class Day02 {
         "Z", Shape.SCISSORS
     );
 
-    private final static Map<String, Outcome> outcomes = Map.of(
+    private static final Map<String, Outcome> outcomes = Map.of(
         "X", Outcome.LOSE,
         "Y", Outcome.DRAW,
         "Z", Outcome.WIN
     );
 
-    public static void run(int mode) throws IOException {
-        System.out.println(Utils.dayTitle(DAY_NAME, mode));
+    public Day02() {
+        super(2022, 2);
+    }
 
-        String filename = Utils.filenameForDay(DAY_DIR, mode);
+    public void run(int mode) throws IOException {
+        System.out.println(Utils.dayTitle(name, mode));
+
+        String filename = Utils.filenameForDay(dir, mode);
         List<String> lines = Utils.lines(filename);
 
         part1(lines);

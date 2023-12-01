@@ -35,7 +35,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass.set("aoc2022.App")
+    mainClass.set("aoc.App")
 }
 
 tasks.named<Test>("test") {

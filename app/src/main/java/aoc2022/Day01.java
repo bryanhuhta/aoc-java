@@ -4,14 +4,19 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-public class Day01 {
-    private final static String DAY_NAME = "Day 1";
-    private final static String DAY_DIR = "day01";
+import aocutils.Day;
+import aocutils.Utils;
 
-    public static void run(int mode) throws IOException {
-        System.out.println(Utils.dayTitle(DAY_NAME, mode));
+public class Day01 extends Day {
+    public Day01() {
+        super(2022, 1);
+    }
 
-        String filename = Utils.filenameForDay(DAY_DIR, mode);
+    @Override
+    public void run(int mode) throws IOException {
+        System.out.println(Utils.dayTitle(name, mode));
+
+        String filename = Utils.filenameForDay(dir, mode);
         List<String> lines = Utils.lines(filename);
 
         part1(lines);
