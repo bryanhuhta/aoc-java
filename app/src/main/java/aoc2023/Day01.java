@@ -10,6 +10,6 @@ public class Day01 extends Day {
     }
 
     @Override
-    public void run(int mode) throws IOException {
+    protected void _run() throws IOException {
     }
 }

@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import aocutils.Day;
-import aocutils.Utils;
 
 enum Shape {
     ROCK,
@@ -42,12 +41,8 @@ public class Day02 extends Day {
     }
 
     @Override
-    public void run(int mode) throws IOException {
-        System.out.println(Utils.dayTitle(name, mode));
-
-        String filename = Utils.filenameForDay(dir, mode);
-        List<String> lines = Utils.lines(filename);
-
+    protected void _run() throws IOException {
+        List<String> lines = getLines();
         part1(lines);
         part2(lines);
     }
