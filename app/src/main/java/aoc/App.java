@@ -9,6 +9,7 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
 import aocutils.Day;
+import aocutils.Mode;
 
 public class App {
     static {
@@ -26,10 +27,10 @@ public class App {
     public static void main(String[] args) throws IOException, ParseException {
         Options options = new Options()
             .addOption(
-                "m",
-                "mode",
-                true,
-                "the mode to run the aoc challenge (default: 0 (test mode))"
+                "test",
+                "test",
+                false,
+                "the mode to run the aoc challenge (default: normal)"
             )
             .addOption(
                 "y",
@@ -42,7 +43,7 @@ public class App {
         CommandLine cmd = parser.parse(options, args);
         args = cmd.getArgs();
 
-        int mode = Integer.parseInt(cmd.getOptionValue("m", "0"));
+        Mode mode = cmd.hasOption("test") ? Mode.TEST : Mode.NORMAL;
         int year = Integer.parseInt(cmd.getOptionValue("y", "0"));
         int day = args.length >= 1 ? Integer.parseInt(args[0]) : 0;
 

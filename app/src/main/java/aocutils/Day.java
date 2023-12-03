@@ -21,12 +21,11 @@ public abstract class Day {
     protected int year;
     protected int day;
 
-    private int mode;
+    private Mode mode = Mode.NORMAL;
 
     protected Day(int year, int number) {
         this.year = year;
         this.day = number;
-        this.mode = 0; // Default to test mode.
 
         this.name = String.format("(%d) Day %d", year, number);
         this.dir = String.format("%d/day%02d", year, number);
@@ -42,7 +41,7 @@ public abstract class Day {
         return day;
     }
 
-    public void run(int mode) throws IOException {
+    public void run(Mode mode) throws IOException {
         this.mode = mode;
 
         System.out.println(getTitle());
@@ -110,13 +109,13 @@ public abstract class Day {
     }
 
     protected boolean isTestMode() {
-        return mode == 0;
+        return mode == Mode.TEST;
     }
 
     private String getFilenameForDay() {
         switch (mode) {
-        case 0: return String.format("%s/test.txt", dir);
-        case 1: return String.format("%s/data.txt", dir);
+        case TEST: return String.format("%s/test.txt", dir);
+        case NORMAL: return String.format("%s/data.txt", dir);
         default: throw new IllegalArgumentException("invalid mode: " + mode);
         }
     }
