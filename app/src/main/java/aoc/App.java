@@ -11,6 +11,18 @@ import org.apache.commons.cli.ParseException;
 import aocutils.Day;
 
 public class App {
+    static {
+        // 2023
+        new aoc2023.Day01();
+        new aoc2023.Day02();
+
+        // 2022
+        new aoc2022.Day01();
+        new aoc2022.Day02();
+        new aoc2022.Day03();
+        new aoc2022.Day04();
+    }
+
     public static void main(String[] args) throws IOException, ParseException {
         Options options = new Options()
             .addOption(
@@ -34,7 +46,6 @@ public class App {
         int year = Integer.parseInt(cmd.getOptionValue("y", "0"));
         int day = args.length >= 1 ? Integer.parseInt(args[0]) : 0;
 
-        Day aocDay = AocDays.getDayOrLatest(year, day);
-        aocDay.run(mode);
+        Day.getDayOrLatest(year, day).run(mode);
     }
 }
