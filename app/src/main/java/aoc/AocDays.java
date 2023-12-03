@@ -8,6 +8,7 @@ public class AocDays {
     private static final List<Day> allDays = Arrays.asList(
         // 2023
         new aoc2023.Day01(),
+        new aoc2023.Day02(),
 
         // 2022
         new aoc2022.Day01(),
