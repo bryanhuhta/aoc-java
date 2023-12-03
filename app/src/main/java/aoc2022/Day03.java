@@ -16,6 +16,9 @@ public class Day03 extends Day {
     protected void _run() throws IOException {
         List<String> lines = getLines();
         part1(lines);
+
+        lines = isTestMode() ? getLines(String.format("%s/test2.txt", dir)) : lines;
+        part2(lines);
     }
 
     private static void part1(List<String> lines) {
@@ -39,6 +42,11 @@ public class Day03 extends Day {
         }
 
         System.out.println("part 1: " + score);
+    }
+
+    private static void part2(List<String> lines) {
+        int score = 0;
+        System.out.println("part 2: " + score);
     }
 
     private static int score(Set<Character> set) {
