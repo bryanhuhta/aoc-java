@@ -17,6 +17,7 @@ public class App {
         new aoc2023.Day01();
         new aoc2023.Day02();
         new aoc2023.Day03();
+        new aoc2023.Day04();
 
         // 2022
         new aoc2022.Day01();
